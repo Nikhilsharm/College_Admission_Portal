@@ -4,7 +4,7 @@ const app = express();
 
 const web = require("./routing/web");
 const connectDB = require("./db/connectDB");
-const fileUpload = require("express-fileUpload");
+const fileUpload = require("express-fileupload");
 let cookieParser = require("cookie-parser");
 require('dotenv').config();
 const Port =process.env.port || 3000;
