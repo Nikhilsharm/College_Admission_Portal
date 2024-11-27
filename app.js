@@ -1,11 +1,13 @@
 const express = require("express");
 // console.log(express)
 const app = express();
-const Port = 3000;
+
 const web = require("./routing/web");
 const connectDB = require("./db/connectDB");
 const fileUpload = require("express-fileUpload");
 let cookieParser = require("cookie-parser");
+require('dotenv').config();
+const Port =process.env.port || 3000;
  
 //token get
 app.use(cookieParser());
