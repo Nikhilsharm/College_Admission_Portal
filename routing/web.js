@@ -1,6 +1,6 @@
 const express = require('express')
 const FrontController = require('../controllers/FrontController')
-const AdminController = require('../controllers/Admin/AdminController')
+const AdminController = require('../controllers/admin/AdminController')
 const route = express.Router()
 const checkAuth=require('../middleware/auth')
 const CourseController = require('../controllers/CourseController')
