@@ -13,8 +13,7 @@
         <!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Student</a></li>
-            <li class="breadcrumb-item active">Display</li>
+            
           </ol>
         </div>
         <!-- /.col -->
@@ -68,6 +67,7 @@
                     <form action="/admin/update_status/<%= item._id %>" method="post">
                         <textarea name="comment" class="form-control"></textarea>
                         <input type="hidden" name="name" value="<%= item.name %>">
+                        <input type="hidden" name="course" value="<%= item.course %>">
                         <input type="hidden" name="email" value="<%= item.email %>">
                 </td>
                 <td>
@@ -78,9 +78,9 @@
                 </form>
                 </td>
                 <td>
-                    <a href="/courseView/<%= item._id %>" class="btn btn-primary">View</a>
-                    <a href="/courseEdit/<%= item._id %>" class="btn btn-info">Edit</a>
-                    <a href="/courseDelete/<%= item._id %>" class="btn btn-danger">Delete</a>
+                    <a href="/admin/courseView/<%= item._id %>" class="btn btn-primary">View</a>
+                    <a href="/admin/courseEdit/<%= item._id %>" class="btn btn-info">Edit</a>
+                    <a href="/admin/courseDelete/<%= item._id %>" class="btn btn-danger">Delete</a>
                 </td>
 
               </tr>
@@ -112,42 +112,6 @@
 </div>
 <!-- /.content-wrapper -->
 
-<div class="modal fade" id="modal-default">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="model-tittle">Add New student</h4>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        
-            <form action="/admin/insertStudent" method="post">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="name">Email</label>
-                <input type="text" name="email" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="name">Password</label>
-                <input type="text" name="password" class="form-control">
-              </div>
-              <button type="submit" class="btn btn-info">Submit</button>
-            </form>
-          </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
+
 
 <%- include('./footer.ejs') %>

@@ -1,4 +1,6 @@
 const CourseModel = require('../models/course')
+const nodemailer=require('nodemailer')
+
 class CourseController {
 
   static Courseinsert = async (req, res) => {
@@ -15,7 +17,8 @@ class CourseController {
         education,
         course,
         user_id: id
-      })
+      });
+      this.sendEmail(name,email,course)
       res.redirect('/courseDisplay')
     } catch (error) {
       console.log(error)
@@ -89,5 +92,27 @@ static courseDelete =async(req,res)=>{
         console.log(error)
     }
 }
+static sendEmail = async (name, email,course) => {
+  console.log(name,email,course)
+  // connenct with the smtp server
+
+  let transporter = await nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+
+    auth: {
+      user: "purohitwork2002@gmail.com",
+      pass: "exya rouj blzs uwtm",
+    },
+  });
+  let info = await transporter.sendMail({
+      from: "test@gmail.com", // sender address
+      to: email, // list of receivers
+      subject: ` Course ${course}`, // Subject line
+      text: "heelo", // plain text body
+      html: `<b>${name}</b> Course  <b>${course}</b> insert successful! <br>
+       `, // html body
+  });
+};
 }
 module.exports = CourseController

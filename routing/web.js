@@ -41,6 +41,13 @@ route.post('/admin/StudentUpdate/:id',checkAuth, AdminController.studentUpdate)
 route.post('/admin/insertStudent',checkAuth, AdminController.studentInsert)
 route.get('/admin/Coursedisplay',checkAuth, AdminController.Coursedisplay)
 route.post('/admin/update_status/:id',checkAuth, AdminController.update_status)
+route.get('/admin/profile',checkAuth,AdminController.profile)
+route.post('/admin/changePassword',checkAuth,AdminController.changePassword)
+route.post('/admin/updateProfile',checkAuth,AdminController.updateProfile)
+route.get("/admin/courseView/:id",checkAuth,AdminController.courseView)
+route.get("/admin/courseEdit/:id",checkAuth,AdminController.courseEdit)
+route.get("/admin/courseDelete/:id",checkAuth,AdminController.deleteCourse)
+route.get('/admin/Contactdisplay',checkAuth, AdminController.Contactdisplay)
 
 //contactController
 route.post("/insertcontact", ContactController.insertContact);

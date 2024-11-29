@@ -6,20 +6,26 @@
         <h2 class="mt-5 pt-5">Know More</h2>
         <p class="lead">We are available to assist you anytime.</p>
       </div>
-
+      <% if(msg1.length> 0){ %>
+        <div class="alert alert-success">
+          <!--To Print-->
+          <%= msg1 %>
+        </div>
+        <% } %>
       <div class="row g-5">
 
         <div class="col-md-7 col-lg-8">
           <h4 class="mb-3">Contact Us!</h4>
           <form class="needs-validation" novalidate="" action="/insertContact" method="post">
             <div class="row g-3 paddingValue">
+              
               <div class="col-12">
                 <label for="firstName" class="form-label">Name</label>
                 <input name="name" type="text" class="form-control" id="firstName" placeholder="Enter Your Name..."
                   value="" required="" />
                 <div class="invalid-feedback">Valid name is required.</div>
               </div>
-
+              
               <div class="col-12">
                 <label for="email" class="form-label">Email
                   <span class="text-body-secondary"></span></label>

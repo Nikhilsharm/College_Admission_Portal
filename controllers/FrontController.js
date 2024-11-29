@@ -91,7 +91,7 @@ class FrontController {
   static contact = async (req, res) => {
     try {
       const { name, image } = req.userData;
-      res.render("contact", { n: name, i: image });
+      res.render("contact", {msg1: req.flash("success"), n: name, i: image });
     } catch (error) {
       console.log(error);
     }
@@ -252,7 +252,7 @@ class FrontController {
   static changePassword = async (req, res) => {
     try {
       const { id } = req.Udata;
-      console.log(req.body);
+      // console.log(req.body);
       const { op, np, cp } = req.body;
       if (op && np && cp) {
         const user = await UserModel.findById(id);
@@ -281,22 +281,7 @@ class FrontController {
     } catch (error) {
       console.log(error);
     }
-    if (user.role == "admin") {
-      //token create
-      var jwt = require("jsonwebtoken");
-      let token = jwt.sign({ ID: user.id }, "klsahkohoikaniahoh");
-      //console.log(token)middleware
-      res.cookie("token", token);
-      res.redirect("/admin/dashboard");
-    }
-    if (user.role == "student") {
-      //token create
-      var jwt = require("jsonwebtoken");
-      let token = jwt.sign({ ID: user.id }, "klsahkohoikaniahoh");
-      //console.log(token)middleware
-      res.cookie("token", token);
-      res.redirect("/home");
-    }
+    
   };
 }
 module.exports = FrontController;
