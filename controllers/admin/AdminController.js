@@ -4,6 +4,7 @@ const ContactModel=require('../../models/contact');
 const bcrypt = require("bcrypt");
 const nodemailer=require('nodemailer')
 
+
 class AdminController{
   
   static dashboard=async(req,res)=>{
@@ -94,7 +95,7 @@ class AdminController{
     try{
       const {name, image} = req.userData;
       const course = await CourseModel.find()
-      //console.log(course)
+      // console.log(course)
 
        res.render('admin/Coursedisplay',{c:course, n:name, i:image});
     }catch(error){
@@ -241,6 +242,15 @@ static courseEdit =async(req,res)=>{
         console.log(error)
     }
   };
+  static deletecontact=async (req,res)=>{
+    try{
+      // console.log(req.params.id)
+      await ContactModel.findByIdAndDelete(req.params.id)
+      res.redirect('/admin/Contactdisplay')
+    }catch(error){  
+      console.log(error)
+    }
+  };
   static sendEmail = async (name, email,course,status,comment) => {
     console.log(name,email,course)
     // connenct with the smtp server
@@ -263,5 +273,31 @@ static courseEdit =async(req,res)=>{
          `, // html body
     });
   };
+ 
+  static getUsers = async (req, res) => {
+    try {
+      // await connectToDatabase();
+      const {name, image} = req.userData;
+      const now = new Date();
+      const fourDaysAgo = new Date(now.setUTCDate(now.getUTCDate() - 4));
+      const startOfDay = new Date(fourDaysAgo.setUTCHours(0, 0, 0, 0)).getTime();
+      const endOfDay = new Date(fourDaysAgo.setUTCHours(23, 59, 59, 999)).getTime(); // Ensure database connection
+      const data = await CourseModel.find()
+        // {
+        //   timestampField: {
+        //     $gte: startOfDay,
+        //     $lt: endOfDay
+        //   },
+        //   status: "pending"
+        // }
+        // console.log(data)
+        // Fetch all users
+        res.json(data);
+         // Send users as JSON
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).json({ message: 'Error fetching users' });
+    }
+};
 }
 module.exports=AdminController

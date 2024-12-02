@@ -37,6 +37,7 @@ route.get('/admin/studentdisplay',checkAuth,AdminController.displayStudent)
 route.get('/admin/deleteStudent/:id',checkAuth, AdminController.deleteStudent)
 route.get('/admin/viewStudent/:id',checkAuth,AdminController.viewStudent)
 route.get('/admin/editStudent/:id',checkAuth,AdminController.editStudent)
+route.get('/admin/dashboard/getUsers',checkAuth,AdminController.getUsers);
 
 route.post('/admin/StudentUpdate/:id',checkAuth, AdminController.studentUpdate)
 route.post('/admin/insertStudent',checkAuth, AdminController.studentInsert)
@@ -49,6 +50,7 @@ route.get("/admin/courseView/:id",checkAuth,AdminController.courseView)
 route.get("/admin/courseEdit/:id",checkAuth,AdminController.courseEdit)
 route.get("/admin/courseDelete/:id",checkAuth,AdminController.deleteCourse)
 route.get('/admin/Contactdisplay',checkAuth, AdminController.Contactdisplay)
+route.get('/admin/deletecontact/:id',checkAuth, AdminController.deletecontact)
 
 //contactController
 route.post("/insertcontact", ContactController.insertContact);
