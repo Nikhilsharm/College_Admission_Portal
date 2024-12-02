@@ -88,6 +88,13 @@ class FrontController {
       console.log(error);
     }
   };
+  static forgotPassword = async (req, res) => {
+    try {
+      res.render("forgot_password", { message: req.flash("error") });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   static contact = async (req, res) => {
     try {
       const { name, image } = req.userData;

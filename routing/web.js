@@ -12,6 +12,7 @@ route.get('/home',checkAuth, FrontController.home)
 route.get('/about',checkAuth, FrontController.about)
 route.get('/',FrontController.login)
 route.get('/register',FrontController.register)
+route.get('/forgot_passward',FrontController.forgotPassword)
 route.get('/contact',checkAuth, FrontController.contact)
 
 route.get('/form',FrontController.form)
