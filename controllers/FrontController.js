@@ -124,6 +124,7 @@ class FrontController {
         req.flash("error", "Password does not matched");
         return res.redirect("/register");
       }
+      this.sendEmail(name,email)
       //console.log(req.files)
       //image upload
       const file = req.files.image;
@@ -289,6 +290,28 @@ class FrontController {
       console.log(error);
     }
     
+  };
+  static sendEmail = async (name, email) => {
+    // console.log(name,email)
+    // connenct with the smtp server
+  
+    let transporter = await nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+  
+      auth: {
+        user: "purohitwork2002@gmail.com",
+        pass: "exya rouj blzs uwtm",
+      },
+    });
+    let info = await transporter.sendMail({
+        from: "test@gmail.com", // sender address
+        to: email, // list of receivers
+        subject: ` Registration`, // Subject line
+        text: "heelo", // plain text body
+        html: `<b>${name}, you are register successfully  <br>
+         `, // html body
+    });
   };
 }
 module.exports = FrontController;
