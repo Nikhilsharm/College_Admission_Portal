@@ -1,10 +1,10 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #2E252B;">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Amity</span>
+      <span class="brand-text font-weight-light" style="color: white;">Amity</span>
     </a>
 
     <!-- Sidebar -->
@@ -15,7 +15,7 @@
           <img src="<%= i.url %>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><%= n %></a>
+          <a href="/admin/profile" class="d-block" style="color: white;"><%= n %></a>
         </div>
       </div>
 
@@ -25,8 +25,8 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="#" class="nav-link active text-white"  style="background-color: #34B1AA; color:black">
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 User
                 <i class="right fas fa-angle-left"></i>
@@ -43,7 +43,7 @@
             </ul>
           </li>
           <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active text-white" style="background-color: #34B1AA; color:black">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Course
@@ -62,7 +62,7 @@
           </li>
 
           <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active text-white" style="background-color: #34B1AA; color:black">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Contact
@@ -81,17 +81,16 @@
           </li>
 
           <li class="nav-item">
-            <a href="/logout" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="/logout" class="nav-link text-white" style="background-color: #34B1AA; color:black">
+              
               <p>
-                Logout
-                
+                <i class="bi bi-box-arrow-right"></i>  Logout
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/admin/profile" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="/admin/profile" class="nav-link text-white" style="background-color: #34B1AA; color:black">
+              <i class="nav-icon fas fa-user"></i>
               <p>
                 Profile
               </p>

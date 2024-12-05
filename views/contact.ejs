@@ -34,15 +34,21 @@
                   Please enter a valid email address for Contact..
                 </div>
               </div>
-
+              
               <div class="col-12">
-                <label for="email" class="form-label">Phone
+                <label for="phone" class="form-label">Phone
                   <span class="text-body-secondary"></span></label>
-                <input name="phone" type="numuber" class="form-control" id="email" placeholder="" />
+                <input name="phone" type="numuber" class="form-control" id="phone" placeholder="Enter your phone number"maxlength="10" minlength="10" pattern="\d{10}" 
+                title="Phone number must be exactly 10 digits."  />
                 <div class="invalid-feedback">
                   Please enter a valid contact number
                 </div>
               </div>
+              <script>
+                document.getElementById('phone').addEventListener('input', function (e) {
+                  this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+                });
+              </script>
 
               <div class="col-12">
                 <label for="address" class="form-label">Message</label>
@@ -53,14 +59,13 @@
                 </div>
               </div>
 
+            <center>
               <div class="col-12">
                 <label for="" class="form-label">
                   <span class="text-body-secondary"></span></label>
-                <input name="submit" type="submit" class="form-control" id="submit" placeholder="" />
-                <div class="invalid-feedback">
-                   
-                </div>
+                <input name="submit" type="submit" class="btn text-white" id="submit" style="background-color: #34B1AA; color:black" />
               </div>
+            </center>
               
           </form>
         </div>

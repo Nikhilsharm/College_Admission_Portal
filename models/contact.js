@@ -13,6 +13,8 @@ const ContactSchema = mongoose.Schema(
 
     phone: {
       type: String,
+      minlength: 10, 
+      maxlength: 10,
       require: true,
     },
 

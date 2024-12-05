@@ -12,7 +12,6 @@ route.get('/home',checkAuth, FrontController.home)
 route.get('/about',checkAuth, FrontController.about)
 route.get('/',FrontController.login)
 route.get('/register',FrontController.register)
-route.get('/forgot_passward',FrontController.forgotPassword)
 route.get('/contact',checkAuth, FrontController.contact)
 
 route.get('/form',FrontController.form)
@@ -28,6 +27,10 @@ route.get('/logout',FrontController.logout)
 route.get('/profile',checkAuth,FrontController.profile)
 route.post('/changePassword',checkAuth,FrontController.changePassword)
 route.post('/updateProfile',checkAuth,FrontController.updateProfile)
+// Forgot password
+route.post('/forgot_Password',FrontController.forgetPasswordVerify)
+route.get('/reset-password',FrontController.reset_Password)
+route.post('/reset_Password1',FrontController.reset_Password1)
 
 
 //AdminController
