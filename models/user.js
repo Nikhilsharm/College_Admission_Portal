@@ -33,7 +33,13 @@ const UserSchema = mongoose.Schema(
     },
     token:{
       type:String
-    }
+    },
+    is_verify:{
+      type:String,
+      default:0
+    },
+    googleId: { type: String, required: true }
+
   },
   {
     timestamps: true,

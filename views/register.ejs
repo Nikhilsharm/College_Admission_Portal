@@ -11,7 +11,7 @@
 
 <!-- Bootstrap Link -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"  
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"
   rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -44,79 +44,85 @@
             <!-- Heading (Register Here) -->
             <h1 class="mb-5 text-center">Register Here</h1>
 
-            <% if(message.length > 0){ %>
-            <div class="alert alert-danger">
-              <!--To Print-->
-              <%= message %>
-            </div>
-            <% } %>
+            <% if(message.length> 0){ %>
+              <div class="alert alert-danger">
+                <!--To Print-->
+                <%= message %>
+              </div>
+              <% } %>
+                <% if(msg.length> 0){ %>
+                  <div class="alert alert-success">
+                    <!--To Print-->
+                    <%= msg %>
+                  </div>
+                  <% } %>
 
-            <!-- User Name -->
-            <div class="row mb-4">
-              <div class="col-lg-2 text-center rounded text-light fw-light my-auto p-2"
-                style="background-color: #183e65;">
-                Name
-              </div>
-              <div class="col-lg-10">
-                <input name="name" class="form-control text-capitalize" type="text" placeholder="Enter your name"
-                  />
-              </div>
-            </div>
+                    <!-- User Name -->
+                    <div class="row mb-4">
+                      <div class="col-lg-3 text-center rounded text-light fw-light my-auto p-2"
+                        style="background-color: #183e65;">
+                        Name
+                      </div>
+                      <div class="col-lg-9">
+                        <input name="name" class="form-control text-capitalize" type="text"
+                          placeholder="Enter your name" />
+                      </div>
+                    </div>
 
-            <!-- Email -->
-            <div class="row mb-3">
-              <div class="col-lg-2 text-center rounded text-light fw-light my-auto p-2"
-                style="background-color: #183e65;">
-                Email
-              </div>
-              <div class="col-lg-10">
-                <input name="email" class="form-control" type="email" placeholder="name@example.com" />
-              </div>
-            </div>
+                    <!-- Email -->
+                    <div class="row mb-3">
+                      <div class="col-lg-3 text-center rounded text-light fw-light my-auto p-2"
+                        style="background-color: #183e65;">
+                        Email
+                      </div>
+                      <div class="col-lg-9">
+                        <input name="email" class="form-control" type="email" placeholder="name@example.com" />
+                      </div>
+                    </div>
 
-            <!-- Password -->
-            <div class="row mb-4">
-              <div class="col-lg-2 text-center rounded text-light fw-light my-auto p-2"
-                style="background-color: #183e65;">
-                Password
-              </div>
-              <div class="col-lg-10">
-                <input name="password" class="form-control" type="password" />
-              </div>
-            </div>
+                    <!-- Password -->
+                    <div class="row mb-4">
+                      <div class="col-lg-3 text-center rounded text-light fw-light my-auto p-2"
+                        style="background-color: #183e65;">
+                        Password
+                      </div>
+                      <div class="col-lg-9">
+                        <input name="password" class="form-control" type="password" placeholder="Enter your Password"/>
+                      </div>
+                    </div>
 
-            <!-- Confirm Password -->
-            <div class="row mb-4">
-              <div class="col-lg-3 text-center rounded text-light fw-light my-auto p-2"
-                style="background-color: #183e65;">
-                Confirm Password
-              </div>
-              <div class="col-lg-9">
-                <input name="confirmpassword" class="form-control" type="password" />
-              </div>
-            </div>
+                    <!-- Confirm Password -->
+                    <div class="row mb-4">
+                      <div class="col-lg-3 text-center rounded text-light fw-light my-auto p-2"
+                        style="background-color: #183e65;">
+                        Confirm Password
+                      </div>
+                      <div class="col-lg-9">
+                        <input name="confirmpassword" class="form-control" type="password" placeholder="Confirm Your Password"/>
+                      </div>
+                    </div>
 
-                        <!-- Image -->
-                        <div class="row mb-4">
-                          <div class="col-lg-3 text-center rounded text-light fw-light my-auto p-2"
-                            style="background-color: #183e65;">
-                            Image
-                          </div>
-                          <div class="col-lg-9">
-                            <input name="image" class="form-control" type="file" />
-                          </div>
-                        </div>
+                    <!-- Image -->
+                    <div class="row mb-4">
+                      <div class="col-lg-3 text-center rounded text-light fw-light my-auto p-2"
+                        style="background-color: #183e65;">
+                        Image
+                      </div>
+                      <div class="col-lg-9">
+                        <input name="image" class="form-control" type="file" />
+                      </div>
+                    </div>
 
-            <!-- Button (Login) -->
-            <center>
-              <button type="submit" class="btn btn-primary mb-3 btn-lg">Register</button>
-            </center>
+                    <!-- Button (Login) -->
+                    <center>
+                      <button type="submit" class="btn btn-primary mb-3 btn-lg">Register</button>
+                    </center>
           </form>
           <div class="text-center mt-3">
             <a href="/">Back to Login</a>
+          </div>
         </div>
-        </div>
-        
+
         <!-- End Column-2 -->
       </div>
     </div>

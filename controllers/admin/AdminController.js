@@ -2,8 +2,15 @@ const CourseModel = require('../../models/course');
 const UserModel= require('../../models/user');
 const ContactModel=require('../../models/contact');
 const bcrypt = require("bcrypt");
+const cloudinary = require("cloudinary");
 const nodemailer=require('nodemailer')
 
+//Setup
+cloudinary.config({
+  cloud_name: "dyd2ggq1o",
+  api_key: "644386558396377",
+  api_secret: "TakkI8ejAb20i3UN5UhqpQTii4I",
+});
 
 class AdminController{
   
@@ -80,10 +87,29 @@ class AdminController{
       //console.log(req.body)
       
       const {name,email,password}=req.body
+      if (!name || !email || !password) {
+        req.flash("error", "Please fill All Fields");
+        return res.redirect("/admin/studentdisplay");
+      }
+      const isEmail = await UserModel.findOne({ email });
+      if (isEmail) {
+        req.flash("error", "this email already register");
+        return res.redirect("/admin/studentdisplay");
+      }
+      const file = req.files.image;
+      //console.log(file)
+      const imageUpload = await cloudinary.uploader.upload(file.tempFilePath, {
+        folder: "userprofile",
+      });
+      const hashPassword = await bcrypt.hash(password, 10);
       await UserModel.create({
         name,
         email,
-        password
+        password:hashPassword,
+        image: {
+          public_id: imageUpload.public_id,
+          url: imageUpload.secure_url,
+        },
       })
 
        res.redirect('/admin/studentdisplay',)
@@ -163,7 +189,7 @@ static courseEdit =async(req,res)=>{
       if (req.files) {
         const user = await UserModel.findById(id);
         const imageID = user.image.public_id;
-        console.log(imageID);
+        // console.log(imageID);
 
         //deleting image from Cloudinary
         await cloudinary.uploader.destroy(imageID);

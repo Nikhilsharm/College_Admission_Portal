@@ -1,7 +1,6 @@
 const express = require("express");
 // console.log(express)
 const app = express();
-
 const web = require("./routing/web");
 const connectDB = require("./db/connectDB");
 const fileUpload = require("express-fileupload");
@@ -26,6 +25,8 @@ app.use(
 );
 //Flash messages
 app.use(flash());
+
+
 
 // ejs (html css)
 app.set("view engine", "ejs");
