@@ -2,7 +2,6 @@ const express = require('express')
 const route = express.Router()
 const FrontController = require('../controllers/FrontController')
 const AdminController = require('../controllers/admin/AdminController')
-
 const checkAuth=require('../middleware/auth')
 const isLogin=require('../middleware/isLogin')
 const adminRole=require('../middleware/adminRole')

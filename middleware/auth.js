@@ -12,7 +12,7 @@ const checkAuth =async (req, res, next) => {
     const verifyLogin = jwt.verify(token, "ayushshshgftrfgdbgzxzd");
     // console.log(verifyLogin)
     const data = await UserModel.findOne({_id:verifyLogin.ID})
-    //console.log(data)
+    // console.log(data)
     req.userData =data
     next(); // next method rout par pahucvha dega
   }

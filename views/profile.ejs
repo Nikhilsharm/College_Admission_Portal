@@ -3,16 +3,15 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4 text-center">
-                <h2 class="text-center bg-info">Profile</h2>
+            <div class="col-md-3"></div>
+            <div class="col-md-6 text-center">
+                <h2 class="text-center  text-white" style="background-color: rgb(8, 132, 156);">Profile</h2>
                 <div class="card">
-                    <img src="<%= i.url %>" alt="" height="300px" style="border-radius: 500px;">
+                    <center><img src="<%= i.url %>" alt="" height="150px" width="120px" style="border-radius: 0px;margin-top: 10px;"></center>
                     <div class="card-body">
-                        <h4 style="font-weight: bold;">Name: <%= n %>
+                        <h4 style="font-weight: bold;">Name:<%= n %>
                         </h4>
-                        <h4 style="font-weight: bold;">Email: <%= e %>
-                        </h4>
+                        <h4 style="font-weight: bold;">Email:<%= e %></h4>
                         <br>
                         <button data-bs-toggle="modal" data-bs-target="#updateprofile" class="btn btn-info text-white">Update
                             profile</button>
@@ -25,7 +24,7 @@
 
                 </div><!--card end-->
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-3"></div>
 
         </div><!--row end-->
 
