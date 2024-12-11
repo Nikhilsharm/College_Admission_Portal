@@ -93,7 +93,7 @@ static courseDelete =async(req,res)=>{
     }
 }
 static sendEmail = async (name, email,course) => {
-  console.log(name,email,course)
+//   console.log(name,email,course)
   // connenct with the smtp server
 
   let transporter = await nodemailer.createTransport({
@@ -110,7 +110,58 @@ static sendEmail = async (name, email,course) => {
       to: email, // list of receivers
       subject: ` Course ${course}`, // Subject line
       text: "heelo", // plain text body
-      html: `<b>${name}</b> Course  <b>${course}</b> insert successful! <br>
+      html: `<head>
+      <style>
+          body {
+              font-family: Arial, sans-serif;
+              line-height: 1.6;
+               /* Replace with your image URL */
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center;
+              margin: 0;
+              padding: 0;
+          }
+          .email-container {
+              margin: 0 auto;
+              padding: 20px;
+              max-width: 600px;
+              background: rgba(255, 255, 255, 0.9); /* Optional: Add transparency for readability */
+              border: 1px solid #ccc;
+              border-radius: 5px;
+          }
+          .email-header {
+              font-size: 18px;
+              font-weight: bold;
+              margin-bottom: 10px;
+          }
+          .email-body {
+              margin-bottom: 20px;
+          }
+          .email-footer {
+              font-size: 14px;
+              color: #555;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="email-container">
+          <div class="email-header">Course Enrollment Successful</div>
+
+          <div class="email-body">
+              <p><b>${name}</b>,</p>
+
+              <p>Your enrollment in the course <b>${course}</b> has been successfully processed!</p>
+
+              <p>We are excited to have you on board. Please feel free to reach out if you have any questions or need assistance.</p>
+          </div>
+
+          <div class="email-footer">
+              Thank you,<br>
+              The Support Team
+          </div>
+      </div>
+  </body>
        `, // html body
   });
 };

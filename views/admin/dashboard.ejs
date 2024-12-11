@@ -2,18 +2,19 @@
 <%- include('./header.ejs') %>
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<!-- <div class="content-wrapper"> -->
   <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
+  <!-- <div class="content-header"> -->
+    <!-- <div class="container-fluid"> -->
       <!-- <div class="row mb-2"> -->
-        <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Welcome </h1>
+        <div class="col-sm-12 ">
+          <center><h1 class="m-0 text-dark">Welcome </h1></center>
         </div><!-- /.col -->
        
       <!-- </div> -->
-    </div><!-- /.container-fluid -->
-  </div>
+    <!-- </div> /.container-fluid -->
+  <!-- </div> -->
+<!-- </div> -->
   <!-- /.content-header -->
 
 
@@ -24,6 +25,7 @@
     fetch('/admin/dashboard/getUsers')  // Fetch data from the server
       .then(response => response.json())
       .then(data => {
+        if (data && data.length > 0) {
         let tableContent = 'User Data:\n\n'; // Initial string for the alert
 
         // Loop through the fetched data and format it
@@ -40,6 +42,7 @@
 
         // Show the formatted data in an alert
         alert(tableContent);
+      }
       })
       .catch(error => {
         console.error('Error fetching users:', error);

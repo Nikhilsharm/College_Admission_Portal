@@ -98,3 +98,24 @@ body{
   .zoom:hover {
     transform: scale(1.1); /* Zoom in by 10% */
   }
+  @keyframes slideAndColor {
+    0% {
+      transform: translateX(0);
+      background-color: lightblue;
+    }
+    50% {
+      transform: translateX(150px);
+      background-color: yellow;
+    }
+    100% {
+      transform: translateX(300px);
+      background-color: lightgreen;
+    }
+  }
+
+  .animated-box {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    animation: slideAndColor 3s infinite; /* Apply the complex animation */
+  }

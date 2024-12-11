@@ -180,17 +180,18 @@ class FrontController {
       to: email, // list of receivers
       subject: "For Verification mail", // Subject line
       text: "heelo", // plain text body
-      html:
-        "<p>Hii " +
-        name +
-        ',Please click here to <a href="http://localhost:3000/verify?id=' +
-        user_id +
-        '">Verify</a>Your mail</p>.',
+      html: "<p>Hii " +
+      name +
+      ',Please click here to <a href="http://localhost:3000/verify?id=' +
+      user_id +
+      '">Verify</a>Your mail</p>.',
+
     });
     //console.log(info);
   };
   static verifyMail = async (req, res) => {
     try {
+       console.log(req.query.id)
       const updateinfo = await UserModel.findByIdAndUpdate(req.query.id, {
         is_verify: 1,
       });
@@ -408,12 +409,12 @@ class FrontController {
       to: email, // list of receivers
       subject: "Reset Password", // Subject line
       text: "heelo", // plain text body
-      html:
-        "<p>Hii " +
-        name +
-        ',Please click here to <a href="http://localhost:3000/reset-password?token=' +
-        token +
-        '">Reset</a>Your Password.',
+      html: "<p>Hii " +
+      name +
+      ',Please click here to <a href="http://localhost:3000/reset-password?token=' +
+      token +
+      '">Reset</a>Your Password.',
+
     });
   };
   static reset_Password = async (req, res) => {

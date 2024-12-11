@@ -36,7 +36,16 @@ chatbotId="mHf3HY76QZQGRBsDsRHtL"
 domain="www.chatbase.co"
 defer>
 </script>
-
+<style>
+  /* Custom CSS to set border color to black */
+  .table.table-bordered {
+      border: 1px solid black;
+  }
+  .table.table-bordered th, 
+  .table.table-bordered td {
+      border: 1px solid black;
+  }
+</style>
 </head>
 
 <body>
@@ -67,7 +76,7 @@ defer>
               <a class="nav-link text-white me-3" href="/contact">CONTACT</a>
             </li>
             <li class="nav-item my-auto">
-              <a class="nav-link text-white me-3" href="/profile">
+              <a class="nav-link text-white me-3" href="/profile" style="text-transform:capitalize;">
                 <%= n %>
               </a>
             </li>

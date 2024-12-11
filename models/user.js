@@ -38,7 +38,6 @@ const UserSchema = mongoose.Schema(
       type:String,
       default:0
     },
-    googleId: { type: String, required: true }
 
   },
   {
