@@ -37,5 +37,29 @@
     });
   });
 </script>
+<script>
+
+  // let isCheckingSession = false;
+  
+  const checksession = async () => {
+    // if (isCheckingSession) return; // Prevent overlapping checks
+    // isCheckingSession = true;
+    try {
+      const response = await fetch("/check_session", { credentials: "include" });
+      // console.log(response.status)
+      if (response.status == 401) {
+        if (confirm("Your session has expired. Do you want to log in again?")) {
+          window.location.href = "/";
+        }
+      }
+    } catch (error) {
+      console.error("Error checking session:", error.message || error);
+     }// finally {
+    //   isCheckingSession = false;
+    // }
+  };
+  
+   setInterval(checksession, 30000);
+  </script>
 </body>
 </html>

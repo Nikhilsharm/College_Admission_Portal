@@ -76,7 +76,8 @@ class FrontController {
 
   static login = async (req, res) => {
     try {
-      res.render("login", { msg1: req.flash("success"),
+      res.render("login", {
+        msg1: req.flash("success"),
         msg: req.flash("error"),
       });
     } catch (error) {
@@ -147,9 +148,9 @@ class FrontController {
         },
       });
       if (data) {
-        let token = jwt.sign({ ID: data.id }, 'ayushshshgftrfgdbgzxzd')
+        // let token = jwt.sign({ ID: data.id }, 'ayushshshgftrfgdbgzxzd')
         //console.log(token)middleware
-        res.cookie('token', token)
+        // res.cookie('token', token)
         this.sendVerifymail(name, email, data.id)
         req.flash('success', 'Your Register Success, Plz verify mail')
         res.redirect('/register')
@@ -181,21 +182,29 @@ class FrontController {
       subject: "For Verification mail", // Subject line
       text: "heelo", // plain text body
       html: "<p>Hii " +
-      name +
-      ',Please click here to <a href="http://localhost:3000/verify?id=' +
-      user_id +
-      '">Verify</a>Your mail</p>.',
+        name +
+        ',Please click here to <a href="http://localhost:3000/verify?id=' +
+        user_id +
+        '">Verify</a>Your mail</p>.',
 
     });
     //console.log(info);
   };
   static verifyMail = async (req, res) => {
     try {
-       console.log(req.query.id)
+      //console.log(req.query.id)
       const updateinfo = await UserModel.findByIdAndUpdate(req.query.id, {
         is_verify: 1,
       });
       if (updateinfo) {
+        var jwt = require('jsonwebtoken');
+        let token = jwt.sign({ ID: updateinfo.id }, 'ayushshshgftrfgdbgzxzd')
+        //console.log(token)middleware
+        res.cookie('token', token, token, {
+          httpOnly: true,
+          secure: true,
+          maxAge: 3600000,
+        })
         res.redirect("/home");
       }
     } catch (error) {
@@ -218,7 +227,11 @@ class FrontController {
               var jwt = require('jsonwebtoken');
               let token = jwt.sign({ ID: user.id }, 'ayushshshgftrfgdbgzxzd')
               //console.log(token)middleware
-              res.cookie('token', token)
+              res.cookie('token', token, {
+                httpOnly: true,
+                secure: true,
+                maxAge: 3600000,
+              });
               res.redirect('/admin/dashboard')
             }
             else if (user.role == "student" && user.is_verify == 1) {
@@ -226,7 +239,19 @@ class FrontController {
               var jwt = require('jsonwebtoken');
               let token = jwt.sign({ ID: user.id }, 'ayushshshgftrfgdbgzxzd')
               //console.log(token)middleware
-              res.cookie('token', token)
+              // res.cookie('token', token,{maxAge: 60000});
+              res.cookie("token", token, {
+                httpOnly: true,
+                secure: true,
+                maxAge: 3600000, // Expires in 1 hrs
+              });
+               if (req.session) {
+                 req.session.destroy(err => {
+                if (err) {
+                    console.error("Error destroying session:", err);
+                }
+            });
+        }
               res.redirect('/home')
             }
 
@@ -257,9 +282,29 @@ class FrontController {
 
   static logout = async (req, res) => {
     try {
-      res.clearCookie("token");
-      res.redirect("/");
+      res.clearCookie("token", { httpOnly: true, secure: true, sameSite: "lax" });
+      if (req.session) {
+        req.session.destroy(err => {
+            if (err) {
+                console.log("Error destroying session:", err);
+            }
+        });
+    }
+      return res.redirect("/");
     } catch (error) {
+      console.log(error);
+    }
+  };
+  static checkSession = async (req, res) => {
+    try {
+      // console.log(req.cookies.token);
+      if (req.cookies.token ) {
+        return res.status(200).send({ active: true });
+      } else {
+        return res.status(401).send({ active: false });
+      }
+    }
+    catch (error) {
       console.log(error);
     }
   };
@@ -410,10 +455,10 @@ class FrontController {
       subject: "Reset Password", // Subject line
       text: "heelo", // plain text body
       html: "<p>Hii " +
-      name +
-      ',Please click here to <a href="http://localhost:3000/reset-password?token=' +
-      token +
-      '">Reset</a>Your Password.',
+        name +
+        ',Please click here to <a href="http://localhost:3000/reset-password?token=' +
+        token +
+        '">Reset</a>Your Password.',
 
     });
   };
