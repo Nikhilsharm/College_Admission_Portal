@@ -7,6 +7,11 @@ class CourseController {
     try {
       const { id } = req.userData
       const { name, email, phone, dob, address, gender, education, course } = req.body
+      const isEmail = await CourseModel.findOne({ email });
+      if (isEmail) {
+        req.flash("error", "Already applied from this email");
+        return res.redirect("/home");
+      }
       const result = await CourseModel .create({
         name,
         email,

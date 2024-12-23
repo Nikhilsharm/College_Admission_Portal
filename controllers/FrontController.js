@@ -28,42 +28,14 @@ class FrontController {
         btech: btech,
         bca: bca,
         mca: mca,
+        msg: req.flash("error"),
       }); // home.ejs file
     } catch (error) {
       console.log(error);
     }
   };
 
-  static form = async (req, res) => {
-    try {
-      res.render("form");
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  static insertform = async (req, res) => {
-    try {
-      //console.log(req.body)
-      const { name, email, password, confirmpassword } = req.body;
-      await TeacherModel.create({
-        name,
-        email,
-        password,
-      });
-      res.redirect("/");
-    } catch (error) {
-      console.log("error");
-    }
-  };
-  static displayformdetails = async (req, res) => {
-    try {
-      const data = await TeacherModel.find();
-      res.render("formdeatails", { data });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   static about = async (req, res) => {
     try {

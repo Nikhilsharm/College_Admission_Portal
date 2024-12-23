@@ -16,12 +16,11 @@ route.get('/',isLogin,FrontController.login)
 route.get('/register',FrontController.register)
 route.get('/contact',checkAuth, FrontController.contact)
 
-route.get('/form',FrontController.form)
-route.get('/details',FrontController.displayformdetails)
+
 
 //insert data
 route.post('/insertStudent', FrontController.insertStudent)
-route.post('/form', FrontController.insertform)
+
 //verifyLogin
 route.post('/verifyLogin',FrontController.verifyLogin)
 route.get('/logout',FrontController.logout)
