@@ -76,7 +76,7 @@
                         Email
                       </div>
                       <div class="col-lg-9">
-                        <input name="email" class="form-control" type="email" placeholder="name@example.com" />
+                        <input name="email" class="form-control" type="email" placeholder="name@example.com" title="Enter valid email id"/>
                       </div>
                     </div>
 
@@ -87,7 +87,8 @@
                         Password
                       </div>
                       <div class="col-lg-9">
-                        <input name="password" class="form-control" type="password" placeholder="Enter your Password"/>
+                        <input name="password" id="password" class="form-control" type="password" placeholder="Enter your Password" minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                        title="Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a number, and a special character."/>
                       </div>
                     </div>
 
@@ -98,7 +99,7 @@
                         Confirm Password
                       </div>
                       <div class="col-lg-9">
-                        <input name="confirmpassword" class="form-control" type="password" placeholder="Confirm Your Password"/>
+                        <input name="confirmpassword" id="confirmpassword" class="form-control" type="password" placeholder="Confirm Your Password"/>
                       </div>
                     </div>
 
@@ -109,7 +110,7 @@
                         Image
                       </div>
                       <div class="col-lg-9">
-                        <input name="image" class="form-control" type="file" />
+                        <input name="image" class="form-control" type="file" accept="image/*" />
                       </div>
                     </div>
 

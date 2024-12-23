@@ -1,6 +1,6 @@
 <%- include ('./header.ejs') %>
   <!-- Contact Us -->
-  
+
   <section id="contact ">
     <div class="container ">
       <div class="py-5 text-center">
@@ -13,66 +13,125 @@
           <%= msg1 %>
         </div>
         <% } %>
-      <div class="row g-5" style="justify-content: center;">
+          <div class="row g-5" style="justify-content: center;">
 
-        <div class="col-md-7 col-lg-8">
-          <h4 class="mb-3">Contact Us!</h4>
-          <form class="needs-validation" novalidate="" action="/insertContact" method="post">
-            <div class="row g-3 paddingValue">
-              <div class="col-12">
-                <label for="firstName" class="form-label">Name</label>
-                <input name="name" type="text" class="form-control " id="firstName" placeholder="Enter Your Name..."
-                  value="" required="" />
-                <div class="invalid-feedback">Valid name is required.</div>
-              </div>
-              
-              <div class="col-12">
-                <label for="email" class="form-label">Email
-                  <span class="text-body-secondary"></span></label>
-                <input name="email" type="email" class="form-control" id="email" placeholder="you@example.com" />
-                <div class="invalid-feedback">
-                  Please enter a valid email address for Contact..
-                </div>
-              </div>
-              
-              <div class="col-12" style="justify-content: center;" >
-                <label for="phone" class="form-label">Phone
-                  <span class="text-body-secondary"></span></label>
-                <input name="phone" type="numuber" class="form-control" id="phone" placeholder="Enter your phone number"maxlength="10" minlength="10" pattern="\d{10}" 
-                title="Phone number must be exactly 10 digits."  />
-                <div class="invalid-feedback">
-                  Please enter a valid contact number
-                </div>
-              </div>
-              <script>
-                document.getElementById('phone').addEventListener('input', function (e) {
-                  this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
-                });
-              </script>
+            <div class="col-md-7 col-lg-8">
+              <h4 class="mb-3">Contact Us!</h4>
+              <form class="needs-validation" novalidate="" action="/insertContact" method="post" id="contactForm">
+                <div class="row g-3 paddingValue">
+                  <!-- name Field -->
+                  <div class="col-12">
+                    <label for="firstName" class="form-label">Name</label>
+                    <input name="name" type="text" class="form-control " id="firstName" placeholder="Enter Your Name..."
+                       required="" />
+                    <div class="invalid-feedback">Valid name is required.</div>
+                  </div>
+                  <!-- Email Field -->
+                  <div class="col-12">
+                    <label for="email" class="form-label">Email
+                      <span class="text-body-secondary"></span></label>
+                    <input name="email" type="email" class="form-control" id="email" placeholder="you@example.com" title="Enter valid email"/>
+                    <div class="invalid-feedback">
+                      Please enter a valid email address for Contact..
+                    </div>
+                  </div>
+                  <!-- Phone Field -->
+                  <div class="col-12" style="justify-content: center;">
+                    <label for="phone" class="form-label">Phone
+                      <span class="text-body-secondary"></span></label>
+                    <input name="phone" type="numuber" class="form-control" id="phone"
+                      placeholder="Enter your phone number" maxlength="10" minlength="10" pattern="\d{10}"
+                      title="Phone number must be exactly 10 digits." />
+                    <div class="invalid-feedback">
+                      Please enter a valid contact number
+                    </div>
+                  </div>
+                  
+                    <!-- Message Field -->
+                  <div class="col-12">
+                    <label for="address" class="form-label">Message</label>
+                    <textarea name="message" type="text" class="form-control" id="address"
+                      placeholder="Enter Your Message here...." required=""></textarea>
+                    <div class="invalid-feedback">
+                      Enter your message.....
+                    </div>
+                  </div>
 
-              <div class="col-12">
-                <label for="address" class="form-label">Message</label>
-                <textarea name="message" type="text" class="form-control" id="address"
-                  placeholder="Enter Your Message here...." required=""></textarea>
-                <div class="invalid-feedback">
-                  Enter your message.....
-                </div>
-              </div>
-
-            <center>
-              <div class="col-12">
-                <label for="" class="form-label">
-                  <span class="text-body-secondary"></span></label>
-                <input name="submit" type="submit" class="btn text-white" id="submit" style="background-color: #34B1AA; color:black" />
-              </div>
-            </center>
-              
-          </form>
-        </div>
-      </div>
+                  <center>
+                    <div class="col-12">
+                      <label for="" class="form-label">
+                        <span class="text-body-secondary"></span></label>
+                      <input name="submit" type="submit" class="btn text-white" id="submit"
+                        style="background-color: #34B1AA; color:black" />
+                    </div>
+                  </center>
+              </form>
+            </div>
+          </div>
     </div>
   </section>
-
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const emailInput = document.getElementById("email");
+      const phoneInput = document.getElementById("phone");
+  
+      // Email Validation
+      emailInput.addEventListener("input", function () {
+        if (emailInput.validity.typeMismatch || emailInput.value.trim() === "") {
+          emailInput.classList.add("is-invalid");
+        } else {
+          emailInput.classList.remove("is-invalid");
+        }
+      });
+  
+      // Phone Validation
+      phoneInput.addEventListener("input", function () {
+        const isInvalid = phoneInput.value.length !== 10 || !/^\d{10}$/.test(phoneInput.value);
+        if (isInvalid) {
+          phoneInput.classList.add("is-invalid");
+        } else {
+          phoneInput.classList.remove("is-invalid");
+        }
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("contactForm");
+      const emailInput = document.getElementById("email");
+      const phoneInput = document.getElementById("phone");
+  
+      form.addEventListener("submit", function (event) {
+        let isValid = true;
+  
+        // Validate Email
+        if (emailInput.validity.typeMismatch || emailInput.value.trim() === "") {
+          emailInput.classList.add("is-invalid");
+          isValid = false;
+        } else {
+          emailInput.classList.remove("is-invalid");
+        }
+  
+        // Validate Phone
+        const phoneValue = phoneInput.value.trim();
+        if (phoneValue.length !== 10 || !/^\d{10}$/.test(phoneValue)) {
+          phoneInput.classList.add("is-invalid");
+          isValid = false;
+        } else {
+          phoneInput.classList.remove("is-invalid");
+        }
+  
+        // Prevent form submission if validation fails
+        if (!isValid) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+  
+        // Mark form as validated
+        form.classList.add("was-validated");
+      });
+    });
+  </script>
   <!-- End Contact Us -->
 
   <%- include ('./footer.ejs') %>
