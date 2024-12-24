@@ -119,3 +119,19 @@ body{
     margin: 20px;
     animation: slideAndColor 3s infinite; /* Apply the complex animation */
   }
+  #login-form input[type="password"],
+  #login-form input[type="text"]{
+    width:100%;
+    padding: auto;
+    box-sizing: border-box;
+  }
+  .password-container{
+    position: relative;
+  }
+  .fa-eye{
+    position: absolute;
+    top: 30%;
+    right: 4%;
+    cursor: pointer;
+    color: #000000b0;
+  }
